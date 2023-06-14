@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
 using Sofomo.Data;
+using Sofomo.Domain.Entities;
 using Sofomo.Logic.DTOs;
 
 namespace Sofomo.Logic.Queries
 {
-    [Serializable]
-    internal class GetAllGeolocationsQuery : AbstractQuery
+    public class GetAllGeolocationsQuery : AbstractQuery
     {
         public GetAllGeolocationsQuery(AppDbContext dbContext, IMapper mapper) : base(dbContext, mapper)
         {
@@ -13,7 +13,7 @@ namespace Sofomo.Logic.Queries
 
         public override IEnumerable<IDTO> Execute()
         {
-            var locations = _dbcontext.Locations.ToList();
+            var locations = _dbcontext.Set<Location>().ToList();
             return locations.Select(x => _mapper.Map<LocationDTO>(x));
         }
     }

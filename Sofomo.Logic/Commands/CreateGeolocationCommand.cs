@@ -5,7 +5,7 @@ using Sofomo.Logic.DTOs;
 
 namespace Sofomo.Logic.Commands
 {
-    internal class CreateGeolocationCommand : AbstractCommand
+    public class CreateGeolocationCommand : AbstractCommand
     {
         protected LocationDTO _location;
         public CreateGeolocationCommand(AppDbContext dbContext, LocationDTO location, IMapper mapper) : base(dbContext, mapper)

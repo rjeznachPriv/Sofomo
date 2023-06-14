@@ -3,7 +3,7 @@ using Sofomo.Data;
 
 namespace Sofomo.Logic.Commands
 {
-    internal class DeleteGeolocationCommand : AbstractCommand
+    public class DeleteGeolocationCommand : AbstractCommand
     {
         private Guid _id;
         public DeleteGeolocationCommand(AppDbContext context, Guid id, IMapper mapper) : base(context, mapper)
