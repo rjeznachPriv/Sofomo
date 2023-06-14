@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using Sofomo.Data;
 using Sofomo.Logic.DTOs;
 using System.Web.Http;
@@ -16,7 +17,7 @@ namespace Sofomo.Api.Controllers
     public class GeolocationController : Base.ApiControllerBase
     {
 
-        public GeolocationController(AppDbContext dbContext) : base(dbContext)
+        public GeolocationController(AppDbContext dbContext, IMapper mapper) : base(dbContext, mapper)
         {
         }
 

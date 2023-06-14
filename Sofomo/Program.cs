@@ -10,6 +10,7 @@ builder.Services.AddTransient<AppDbContext, AppDbContext>();
 builder.Services.AddTransient<IQueryFactory, QueryFactory>();
 builder.Services.AddTransient<ICommandFactory, CommandFactory>();
 
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddMvc(x => x.Conventions.Add(new SwaggerIgnore()));
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

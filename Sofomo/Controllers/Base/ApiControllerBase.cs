@@ -1,13 +1,11 @@
 ﻿using System.Data.Entity.Core;
 using System.Web.Http;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Sofomo.Data;
 using Sofomo.Domain.Exceptions;
 using Sofomo.Logic;
-using Sofomo.Logic.DTOs;
 using Sofomo.Logic.Queries.Factories;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
-
 
 namespace Sofomo.Api.Controllers.Base
 {
@@ -16,10 +14,10 @@ namespace Sofomo.Api.Controllers.Base
         protected IQueryFactory queryFactory;
         protected ICommandFactory commandFactory;
 
-        public ApiControllerBase(AppDbContext context)
+        public ApiControllerBase(AppDbContext context, IMapper mapper)
         {
-            queryFactory = new QueryFactory(context);
-            commandFactory = new CommandFactory(context);
+            queryFactory = new QueryFactory(context, mapper);
+            commandFactory = new CommandFactory(context, mapper);
         }
 
         protected IActionResult DoQuery(IQuery query)

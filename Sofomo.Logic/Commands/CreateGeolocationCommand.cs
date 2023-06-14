@@ -1,4 +1,6 @@
-﻿using Sofomo.Data;
+﻿using AutoMapper;
+using Sofomo.Data;
+using Sofomo.Domain.Entities;
 using Sofomo.Logic.DTOs;
 
 namespace Sofomo.Logic.Commands
@@ -6,7 +8,7 @@ namespace Sofomo.Logic.Commands
     internal class CreateGeolocationCommand : AbstractCommand
     {
         protected LocationDTO _location;
-        public CreateGeolocationCommand(AppDbContext dbContext, LocationDTO location) : base(dbContext)
+        public CreateGeolocationCommand(AppDbContext dbContext, LocationDTO location, IMapper mapper) : base(dbContext, mapper)
         {
             _location = location;
         }
@@ -17,14 +19,7 @@ namespace Sofomo.Logic.Commands
                 throw new ArgumentException($"The location with id of {_location.Id} already exists");
             }
 
-            var entity = new Domain.Entities.Location
-            {
-                Id = _location.Id, 
-                Latitude = _location.Latitude,
-                Longitude = _location.Longitude
-            };
-
-            _dbcontext.Locations.Add(entity);
+            _dbcontext.Locations.Add(_mapper.Map<Location>(_location));
             _dbcontext.SaveChanges();
         }
     }

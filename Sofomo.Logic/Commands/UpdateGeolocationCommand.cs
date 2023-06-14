@@ -1,4 +1,5 @@
-﻿using Sofomo.Data;
+﻿using AutoMapper;
+using Sofomo.Data;
 using Sofomo.Logic.DTOs;
 
 namespace Sofomo.Logic.Commands
@@ -6,7 +7,7 @@ namespace Sofomo.Logic.Commands
     internal class UpdateGeolocationCommand : AbstractCommand
     {
         protected LocationDTO _location;
-        public UpdateGeolocationCommand(AppDbContext dbContext, LocationDTO location) : base(dbContext)
+        public UpdateGeolocationCommand(AppDbContext dbContext, LocationDTO location, IMapper mapper) : base(dbContext, mapper)
         {
             _location = location;
         }
