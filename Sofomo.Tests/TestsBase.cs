@@ -16,7 +16,6 @@ namespace Sofomo.Tests
         {
             City = "Wroclaw",
             Country = "Poland",
-            IPorURL = "localhost",
             Latitude = 1,
             Longitude = 1,
             Id = Guid.Parse("ab54b65d-b408-4e20-8070-7e669253dbb0")
@@ -26,7 +25,6 @@ namespace Sofomo.Tests
         {
             City = "Opole",
             Country = "Poland",
-            IPorURL = "localhost",
             Latitude = 2,
             Longitude = 2,
             Id = Guid.Parse("45b690e8-2711-4fc3-aec5-c6caf10b4848")
@@ -37,7 +35,6 @@ namespace Sofomo.Tests
         {
             City = "Katowice",
             Country = "Poland",
-            IPorURL = "localhost",
             Latitude = 3,
             Longitude = 3,
             Id = Guid.Parse("42b690e8-2711-4fc3-aec5-c6caf10b4848")
@@ -47,7 +44,6 @@ namespace Sofomo.Tests
         {
             City = "Wroclaw",
             Country = "Poland",
-            IPorURL = "localhost",
             Latitude = 1,
             Longitude = 1,
             Id = Guid.Parse("ab54b65d-b408-4e20-8070-7e669253dbb0")
@@ -57,7 +53,6 @@ namespace Sofomo.Tests
         {
             City = "Opole",
             Country = "Poland",
-            IPorURL = "localhost",
             Latitude = 2,
             Longitude = 2,
             Id = Guid.Parse("45b690e8-2711-4fc3-aec5-c6caf10b4848")
@@ -71,11 +66,6 @@ namespace Sofomo.Tests
         public void Setup()
         {
             _autoMocker = new AutoMocker();
-
-            //var dbMock = new Mock<AppDbContext>();
-            //dbMock.Setup(m => m.Locations).Returns(GetQueryableMockDbSet(new List<Location> {exampleLocation1, exampleLocation2 }));
-            //_dbContextMock = new Mock<AppDbContext>().Object;
-
             var dbMock = new Mock<AppDbContext>();
             dbMock.Setup(m => m.Set<Location>()).Returns(GetQueryableMockDbSet(new List<Location> { exampleLocation1, exampleLocation2 }));
             _dbContextMock = dbMock.Object;

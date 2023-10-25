@@ -20,7 +20,6 @@
                 Longitude = 1,
                 City = "Wroclaw",
                 Country = "Poland",
-                IPorURL = "127.0.0.1"
             });
             context.SaveChanges();
             //  This method will be called after migrating to the latest version.
