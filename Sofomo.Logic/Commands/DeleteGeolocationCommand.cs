@@ -14,7 +14,7 @@ namespace Sofomo.Logic.Commands
         override public void Execute()
         {
             var entity = _dbcontext.Locations.SingleOrDefault(x => x.Id == _id);
-            if (entity == null) { return; } //Idempotence behaviour
+            if (entity == null) { return; } //Idempotent behaviour
             _dbcontext.Locations.Remove(entity);
             _dbcontext.SaveChanges();
         }

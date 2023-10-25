@@ -1,6 +1,6 @@
 ﻿namespace Sofomo.Domain.Entities
 {
-    public class Location : IEntity
+    public class Location : EntityBase
     {
         public Guid Id { get; set; }
         public double Latitude { get; set; }
